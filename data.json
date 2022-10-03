@@ -1,10 +1,23 @@
 [
 	{
-		"id": "100",
+		"id": 100,
 		"header": "1st Post",
 		"body": "Testing",
 		"username": "32423",
 		"date": "02/10/22",
 		"comments": []
+	},
+	{
+		"id": 101,
+		"header": "New Post",
+		"body": "Testing",
+		"username": "32423",
+		"date": "02/10/22",
+		"comments": [
+			{
+				"commentUsername": "dsf34324",
+				"commentDate": "02/10/22"
+			}
+		]
 	}
 ]

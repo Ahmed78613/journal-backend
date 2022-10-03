@@ -38,10 +38,12 @@ const addNewComment = async (req, res) => {
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
 			if (id === journal.id) {
-				console.log(journal);
+				return { ...journal, comments: [...journal.comments, body] };
+				// journal.comments.push(body);
 			}
 		});
-		// update data.json file with new data
+		console.log(newJournals.comments);
+		// update data.json
 	} catch (error) {
 		console.log(error);
 	}
