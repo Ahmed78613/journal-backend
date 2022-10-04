@@ -72,9 +72,9 @@ const getJournal = async (req, res) => {
 		const journal = await JSON.parse(jsonString);
 
 		//filter journal by id
-		const specifcJournal = journal.filter((journal) => id === journal.id);
-		if (specifcJournal.length > 0) {
-			res.send(specifcJournal[0]);
+		const specificJournal = journal.filter((journal) => id == journal.id);
+		if (specificJournal.length > 0) {
+			res.send(specificJournal[0]);
 		} else {
 			res.send("error - id does not exist");
 		}
