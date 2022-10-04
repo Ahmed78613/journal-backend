@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const data = require("./data");
 const journal = require("./routes/journal");
 
 // middleware
@@ -11,7 +10,7 @@ app.use(bodyParser.json());
 
 // default req
 app.get("/", (req, res) => {
-	res.send(data);
+	res.send("Welcome to our Journal API");
 });
 
 // routes
