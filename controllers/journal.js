@@ -1,5 +1,6 @@
 const data = require("../data");
 const fs = require("fs");
+const { generateUsername } = require("friendly-username-generator");
 
 const getAllJournals = async (req, res) => {
 	try {
@@ -13,12 +14,20 @@ const getAllJournals = async (req, res) => {
 
 const postNewJournal = async (req, res) => {
 	const { body } = req;
+	console.log(body);
 	try {
 		// get
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
 		const journal = await JSON.parse(jsonString);
+		// create random username
+		body.username = generateUsername();
+		// create random icon
+		const randomNum = Math.floor(Math.random() * 53);
+		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
+		body.icon = avatar;
 		// put
 		journal.push(body);
+		// write new
 		fs.writeFileSync("./data.json", JSON.stringify(journal, null, 2));
 		res.send("Added");
 	} catch (error) {
