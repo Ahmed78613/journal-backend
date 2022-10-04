@@ -7,7 +7,9 @@ async function postNewJournal(e) {
 	// Prevent Refresh
 	e.preventDefault();
 	// Setting Id
-	const resOne = await fetch("http://localhost:3000/journal");
+	const resOne = await fetch(
+		"https://futureproof-journal.herokuapp.com/journal"
+	);
 	const dataOne = await resOne.json();
 	// Date & Time
 	const date = Date.now();
@@ -46,7 +48,7 @@ async function postNewJournal(e) {
 
 async function sendToBackend(newEntry) {
 	try {
-		fetch("http://localhost:3000/journal/", {
+		fetch("https://futureproof-journal.herokuapp.com/journal/", {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
@@ -59,7 +61,9 @@ async function sendToBackend(newEntry) {
 
 async function appendAllJournals() {
 	try {
-		const res = await fetch("http://localhost:3000/journal");
+		const res = await fetch(
+			"https://futureproof-journal.herokuapp.com/journal"
+		);
 		const data = await res.json();
 		// Iterate over every journal entry
 		data.map((entry) => {
@@ -139,15 +143,17 @@ async function addComment(e, id) {
 
 async function storeCommentInBackend(comment, id) {
 	try {
-		console.log(typeof id);
-		fetch(`http://localhost:3000/journal/${id}/new-comment`, {
-			method: "POST",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(comment),
-		});
+		fetch(
+			`https://futureproof-journal.herokuapp.com/journal/${id}/new-comment`,
+			{
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(comment),
+			}
+		);
 	} catch (error) {
 		console.log(error);
 	}
