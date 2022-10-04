@@ -11,6 +11,7 @@ async function postNewJournal(e) {
 		"https://futureproof-journal.herokuapp.com/journal"
 	);
 	const dataOne = await resOne.json();
+	console.log(dataOne);
 	// Date & Time
 	const date = Date.now();
 	const today = new Date(date);
@@ -44,6 +45,10 @@ async function postNewJournal(e) {
 	};
 
 	sendToBackend(newEntry);
+	// Reload
+	setTimeout(() => {
+		location.reload();
+	}, 200);
 }
 
 async function sendToBackend(newEntry) {
@@ -56,7 +61,9 @@ async function sendToBackend(newEntry) {
 			},
 			body: JSON.stringify(newEntry),
 		});
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 async function appendAllJournals() {
