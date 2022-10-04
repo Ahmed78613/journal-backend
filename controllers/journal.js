@@ -14,7 +14,6 @@ const getAllJournals = async (req, res) => {
 
 const postNewJournal = async (req, res) => {
 	const { body } = req;
-	console.log(body);
 	try {
 		// get
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
@@ -38,20 +37,25 @@ const postNewJournal = async (req, res) => {
 const addNewComment = async (req, res) => {
 	const { id } = req.params;
 	const { body } = req;
-	console.log(body);
 
 	try {
 		// get
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
 		const journal = await JSON.parse(jsonString);
+		// create random username
+		body.commentUsername = generateUsername();
+		// create random icon
+		const randomNum = Math.floor(Math.random() * 53);
+		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
+		body.commentIcon = avatar;
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
-			if (id === journal.id) {
+			if (id == journal.id) {
 				return {
 					...journal,
 					comments: [body, ...journal.comments],
 				};
-			}
+			} else return journal;
 		});
 		// update data.json file with new data
 		fs.writeFileSync("./data.json", JSON.stringify(newJournals, null, 2));
@@ -79,57 +83,12 @@ const getJournal = async (req, res) => {
 	}
 };
 
-// const emojiCounter = async (req, res) => {
-// 	const { id , emoji} = req.params;
-
-// 	try {
-// 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
-// 		const journal = await JSON.parse(jsonString);
-// 		// console.log(emoji)
-
-// 		if(emoji == "one"){
-
-// 			const emojis = journal.map((ele) => {
-// 				if (id === ele.id) {
-// 					// console.log(ele.emoji[0])
-// 					return {
-// 						...ele,
-// 						emoji: [
-// 							...ele.emoji,
-// 							{
-// 								emojiUsed : ele.emoji[0].emojiUsed ? false : true,
-// 							 	emojiOne: ele.emoji[0].emojiUsed ? ele.emoji[0].emojiOne - 1 : ele.emoji[0].emojiOne + 1
-// 							}
-// 						]
-// 					}
-// 					// return {
-// 					// 	...journal,
-// 					// 	comments: [ body, ...journal.comments]
-// 					// }
-// 				}
-// 			});
-// 			console.log(emojis[0].emoji)
-
-// 		}else if(emoji == "two"){
-
-// 		}else if(emoji == "three"){
-
-// 		}else{
-// 			res.send("nothing")
-// 		}
-
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// };
-
 const emojiCounter = async (req, res) => {
 	const { id, emoji } = req.params;
 
 	try {
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
 		const journal = await JSON.parse(jsonString);
-		// console.log(emoji)
 		const updatedEmoji = journal.map((ele) => {
 			if (id === ele.id) {
 				if (emoji === "one") {
