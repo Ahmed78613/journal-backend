@@ -1,6 +1,7 @@
 const data = require("../data");
 const fs = require("fs");
 const { generateUsername } = require("friendly-username-generator");
+const { v4 } = require("uuid");
 
 const getAllJournals = async (req, res) => {
 	try {
@@ -48,6 +49,8 @@ const addNewComment = async (req, res) => {
 		const randomNum = Math.floor(Math.random() * 53);
 		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
 		body.commentIcon = avatar;
+		// create random id
+		body.commentId = v4();
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
 			if (id == journal.id) {
