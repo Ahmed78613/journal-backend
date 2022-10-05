@@ -130,10 +130,41 @@ const emojiCounter = async (req, res) => {
 	}
 };
 
+const incrementDope = async (req, res) => {
+	// console.log("hwllo from hournal.js")
+	const { id } = req.params;
+	try {
+		const jsonString = await fs.readFileSync("./data.json", "utf-8");
+		const journal = await JSON.parse(jsonString);
+	 const updatedJournal = journal.map((entry) => {
+	// console.log(entry.dope)
+
+		if(id == entry.id) {
+	console.log(entry.dope)
+
+			entry.dope += 1
+			return entry
+			
+		} else {
+			return entry
+		}
+	 }) 
+		// update data.json file with new data
+		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
+		res.send("Dope count updated");
+		
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+
+
 module.exports = {
 	getAllJournals,
 	postNewJournal,
 	addNewComment,
 	getJournal,
 	emojiCounter,
+	incrementDope
 };

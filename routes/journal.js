@@ -6,9 +6,11 @@ const {
 	addNewComment,
 	getJournal,
 	emojiCounter,
+	incrementDope
 } = require("../controllers/journal");
 
 router.get("/", getAllJournals);
+router.get("/:id/dope", incrementDope);
 router.post("/", postNewJournal);
 router.post("/:id/new-comment", addNewComment);
 router.get("/:id", getJournal);
