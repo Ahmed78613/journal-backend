@@ -5,45 +5,24 @@
 		"content": "Test",
 		"username": "hello1243",
 		"icon": "https://xsgames.co/randomusers/assets/avatars/pixel/12.jpg",
-		"emoji": [
-			{
-				"emojiUsed": true,
-				"emojiOne": 0
-			},
-			{
-				"emojiUsed": false,
-				"emojiTwo": 0
-			},
-			{
-				"emojiUsed": false,
-				"emojiThree": 0
-			}
-		],
-		"dope": 0,
-		"gif": [],
+		"emojiOne": 0,
+		"emojiTwo": 0,
+		"emojiThree": 0,
+		"gif": "",
 		"date": "02/10/90",
 		"time": "12:24",
 		"comments": [
 			{
-				"commentId": "91we-f87e-4d4d-ba8d-632346a115ee",
-				"commentUsername": "wordy-ibex369",
-				"commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/26.jpg",
-				"commentBody": "test comment",
-				"commentDate": "12/01/21",
-				"commentTime": "12:15",
+				"commentId": 2,
+				"commentUsername": "magnificent-panda343",
+				"commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/42.jpg",
+				"commentBody": "New comment",
+				"commentDate": "34/12/20",
+				"commentTime": "15:32",
 				"emoji": ""
 			},
 			{
-				"commentId": "38dg-gd43-dfg3-gd345-dg345345",
-				"commentUsername": "artistic-falcon451",
-				"commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/39.jpg",
-				"commentBody": "test comment",
-				"commentDate": "12/01/21",
-				"commentTime": "12:15",
-				"emoji": ""
-			},
-			{
-				"commentId": "98nf-fhg5-fghd5-hfdgg5-fdhgf5",
+				"commentId": 1,
 				"commentUsername": "puzzling-fox416",
 				"commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/41.jpg",
 				"commentBody": "1st comment",
@@ -59,27 +38,15 @@
 		"content": "dsdsffsdf....",
 		"username": "awesome-crocodile341",
 		"icon": "https://xsgames.co/randomusers/assets/avatars/pixel/16.jpg",
-		"emoji": [
-			{
-				"emojiUsed": true,
-				"emojiOne": 0
-			},
-			{
-				"emojiUsed": false,
-				"emojiTwo": 0
-			},
-			{
-				"emojiUsed": false,
-				"emojiThree": 0
-			}
-		],
-		"dope": 0,
-		"gif": [],
+		"emojiOne": 0,
+		"emojiTwo": 0,
+		"emojiThree": 0,
+		"gif": "",
 		"date": "02/04/20",
 		"time": "17:24",
 		"comments": [
 			{
-				"commentId": "sl33-jf4-dfg4-fg443-435afg",
+				"commentId": "1",
 				"commentUsername": "dsf32",
 				"commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/12.jpg",
 				"commentBody": "another comment",

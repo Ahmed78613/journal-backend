@@ -5,15 +5,16 @@ const {
 	postNewJournal,
 	addNewComment,
 	getJournal,
-	emojiCounter,
-	incrementDope
+	emojiOneIncrement,
+	emojiTwoIncrement,
+	emojiThreeIncrement,
 } = require("../controllers/journal");
 
-router.get("/", getAllJournals);
-router.get("/:id/dope", incrementDope);
-router.post("/", postNewJournal);
-router.post("/:id/new-comment", addNewComment);
-router.get("/:id", getJournal);
-router.post("/:id/emoji/:emoji", emojiCounter);
+router.route("/").get(getAllJournals).post(postNewJournal);
+router.route("/:id/new-comment").post(addNewComment);
+router.route("/:id").get(getJournal);
+router.route("/:id/emojiOne").get(emojiOneIncrement);
+router.route("/:id/emojiTwo").get(emojiTwoIncrement);
+router.route("/:id/emojiThree").get(emojiThreeIncrement);
 
 module.exports = router;

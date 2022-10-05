@@ -1,7 +1,6 @@
 const data = require("../data");
 const fs = require("fs");
 const { generateUsername } = require("friendly-username-generator");
-const { v4 } = require("uuid");
 
 const getAllJournals = async (req, res) => {
 	try {
@@ -25,7 +24,9 @@ const postNewJournal = async (req, res) => {
 		const randomNum = Math.floor(Math.random() * 53);
 		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
 		body.icon = avatar;
-		// put
+		// Set Id
+		body.id = journal.length + 1;
+		// push new journal entry
 		journal.push(body);
 		// write new
 		fs.writeFileSync("./data.json", JSON.stringify(journal, null, 2));
@@ -50,16 +51,18 @@ const addNewComment = async (req, res) => {
 		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
 		body.commentIcon = avatar;
 		// create random id
-		body.commentId = v4();
+
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
 			if (id == journal.id) {
+				body.commentId = journal.comments.length + 1;
 				return {
 					...journal,
 					comments: [body, ...journal.comments],
 				};
 			} else return journal;
 		});
+		console.log(newJournals);
 		// update data.json file with new data
 		fs.writeFileSync("./data.json", JSON.stringify(newJournals, null, 2));
 		res.send("Added a new");
@@ -86,85 +89,76 @@ const getJournal = async (req, res) => {
 	}
 };
 
-const emojiCounter = async (req, res) => {
-	const { id, emoji } = req.params;
-
-	try {
-		const jsonString = await fs.readFileSync("./data.json", "utf-8");
-		const journal = await JSON.parse(jsonString);
-		const updatedEmoji = journal.map((ele) => {
-			if (id === ele.id) {
-				if (emoji === "one") {
-					ele.emoji[0].emojiUsed
-						? (ele.emoji[0].emojiUsed = false)
-						: (ele.emoji[0].emojiUsed = true);
-					ele.emoji[0].emojiUsed
-						? (ele.emoji[0].emojiOne += 1)
-						: (ele.emoji[0].emojiOne -= 1);
-					return ele;
-				} else if (emoji === "two") {
-					ele.emoji[1].emojiUsed
-						? (ele.emoji[1].emojiUsed = false)
-						: (ele.emoji[1].emojiUsed = true);
-					ele.emoji[1].emojiUsed
-						? (ele.emoji[1].emojiTwo += 1)
-						: (ele.emoji[1].emojiTwo -= 1);
-					return ele;
-				} else if (emoji === "three") {
-					ele.emoji[2].emojiUsed
-						? (ele.emoji[2].emojiUsed = false)
-						: (ele.emoji[2].emojiUsed = true);
-					ele.emoji[2].emojiUsed
-						? (ele.emoji[2].emojiThree += 1)
-						: (ele.emoji[2].emojiThree -= 1);
-					return ele;
-				} else return ele;
-			}
-		});
-
-		// update data.json file with new data
-		fs.writeFileSync("./data.json", JSON.stringify(updatedEmoji, null, 2));
-		res.send("Emoji count updated");
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-const incrementDope = async (req, res) => {
-	// console.log("hwllo from hournal.js")
+// Emoji 1
+const emojiOneIncrement = async (req, res) => {
 	const { id } = req.params;
 	try {
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
 		const journal = await JSON.parse(jsonString);
-	 const updatedJournal = journal.map((entry) => {
-	// console.log(entry.dope)
-
-		if(id == entry.id) {
-	console.log(entry.dope)
-
-			entry.dope += 1
-			return entry
-			
-		} else {
-			return entry
-		}
-	 }) 
+		const updatedJournal = journal.map((entry) => {
+			if (id == entry.id) {
+				entry.emojiOne += 1;
+				return entry;
+			} else {
+				return entry;
+			}
+		});
 		// update data.json file with new data
 		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
 		res.send("Dope count updated");
-		
 	} catch (error) {
 		console.log(error);
 	}
 };
-
-
+// Emoji 2
+const emojiTwoIncrement = async (req, res) => {
+	const { id } = req.params;
+	try {
+		const jsonString = await fs.readFileSync("./data.json", "utf-8");
+		const journal = await JSON.parse(jsonString);
+		const updatedJournal = journal.map((entry) => {
+			if (id == entry.id) {
+				entry.emojiTwo += 1;
+				return entry;
+			} else {
+				return entry;
+			}
+		});
+		// update data.json file with new data
+		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
+		res.send("Dope count updated");
+	} catch (error) {
+		console.log(error);
+	}
+};
+// Emoji 3
+const emojiThreeIncrement = async (req, res) => {
+	const { id } = req.params;
+	try {
+		const jsonString = await fs.readFileSync("./data.json", "utf-8");
+		const journal = await JSON.parse(jsonString);
+		const updatedJournal = journal.map((entry) => {
+			if (id == entry.id) {
+				entry.emojiThree += 1;
+				return entry;
+			} else {
+				return entry;
+			}
+		});
+		// update data.json file with new data
+		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
+		res.send("Dope count updated");
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 module.exports = {
 	getAllJournals,
 	postNewJournal,
 	addNewComment,
 	getJournal,
-	emojiCounter,
-	incrementDope
+	emojiOneIncrement,
+	emojiTwoIncrement,
+	emojiThreeIncrement,
 };
