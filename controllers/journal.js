@@ -1,6 +1,7 @@
 const data = require("../data");
 const fs = require("fs");
 const { generateUsername } = require("friendly-username-generator");
+const shortid = require("shortid");
 
 const getAllJournals = async (req, res) => {
 	try {
@@ -50,8 +51,9 @@ const addNewComment = async (req, res) => {
 		const randomNum = Math.floor(Math.random() * 53);
 		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
 		body.commentIcon = avatar;
-		// create random id
-
+		// Set random id
+		body.id = shortid.generate();
+		console.log(shortid.generate());
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
 			if (id == journal.id) {
@@ -62,7 +64,6 @@ const addNewComment = async (req, res) => {
 				};
 			} else return journal;
 		});
-		console.log(newJournals);
 		// update data.json file with new data
 		fs.writeFileSync("./data.json", JSON.stringify(newJournals, null, 2));
 		res.send("Added a new");

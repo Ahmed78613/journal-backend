@@ -13,24 +13,24 @@
     "time": "12:24",
     "comments": [
       {
-        "commentId": 2,
+        "commentId": "e2ryt9dzkh",
         "commentUsername": "magnificent-panda343",
         "commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/42.jpg",
         "commentBody": "New comment",
         "commentDate": "34/12/20",
         "commentTime": "12:32",
-        "like": 4,
-        "dislike": 3
+        "like": 9,
+        "dislike": 5
       },
       {
-        "commentId": 1,
+        "commentId": "vVG5aldLlB",
         "commentUsername": "puzzling-fox416",
         "commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/41.jpg",
         "commentBody": "1st comment",
         "commentDate": "03/05/20",
         "commentTime": "12:24",
         "like": 6,
-        "dislike": 3
+        "dislike": 5
       }
     ]
   },
@@ -48,14 +48,14 @@
     "time": "17:24",
     "comments": [
       {
-        "commentId": "1",
+        "commentId": "EtTmnhTI05",
         "commentUsername": "dssf32",
         "commentIcon": "https://xsgames.co/randomusers/assets/avatars/pixel/12.jpg",
         "commentBody": "another comment",
         "commentDate": "11/12/22",
         "commentTime": "13:11",
-        "like": 2,
-        "dislike": 2
+        "like": 4,
+        "dislike": 5
       }
     ]
   }
