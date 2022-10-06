@@ -9,7 +9,7 @@ const getAllJournals = async (req, res) => {
 		const journal = await JSON.parse(jsonString);
 		res.send(journal);
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 
@@ -31,10 +31,9 @@ const postNewJournal = async (req, res) => {
 		journal.push(body);
 		// write new
 		fs.writeFileSync("./data.json", JSON.stringify(journal, null, 2));
-		console.log(body);
 		res.status(201).send(journal);
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 
@@ -67,7 +66,7 @@ const addNewComment = async (req, res) => {
 		fs.writeFileSync("./data.json", JSON.stringify(newJournals, null, 2));
 		res.send("Added a new");
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 
@@ -85,7 +84,7 @@ const getJournal = async (req, res) => {
 			res.send("error - id does not exist");
 		}
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 
@@ -107,7 +106,7 @@ const emojiOneIncrement = async (req, res) => {
 		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
 		res.send("Dope count updated");
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 // Emoji 2
@@ -128,7 +127,7 @@ const emojiTwoIncrement = async (req, res) => {
 		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
 		res.send("Dope count updated");
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 // Emoji 3
@@ -149,7 +148,7 @@ const emojiThreeIncrement = async (req, res) => {
 		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
 		res.send("Dope count updated");
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 
@@ -167,12 +166,11 @@ const likeIncrement = async (req, res) => {
 			}
 			return entry;
 		});
-		console.log(updatedJournal);
 		// update data.json file with new data
 		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
 		res.send(updatedJournal);
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 
@@ -190,12 +188,11 @@ const dislikeIncrement = async (req, res) => {
 			}
 			return entry;
 		});
-		console.log(updatedJournal);
 		// update data.json file with new data
 		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
 		res.send(updatedJournal);
 	} catch (error) {
-		console.log(error);
+		console.warn(error);
 	}
 };
 

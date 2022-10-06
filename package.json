@@ -4,10 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"coverage": "jest --coverage",
+		"coverage": "jest --coverage --detectOpenHandles",
 		"start": "node index.js",
 		"dev": "nodemon index.js",
-		"test": "jest --watchAll"
+		"test": "jest"
 	},
 	"keywords": [],
 	"author": "",
