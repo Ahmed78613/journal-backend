@@ -53,7 +53,8 @@ const addNewComment = async (req, res) => {
 		const avatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${randomNum}.jpg`;
 		body.commentIcon = avatar;
 		// Set random id
-		body.commentId = shortid.generate();
+		body.id = shortid.generate();
+		console.log(shortid.generate());
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
 			if (id == journal.id) {
