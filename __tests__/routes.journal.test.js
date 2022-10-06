@@ -33,7 +33,7 @@ describe("API server", () => {
 	});
 	// GET /journal/1/emojiThree
 	it("responds to get /journal/1/emojiThree with a status of 200", () => {
-		request(api).get("/journal/1/emojiThree").expect(200);
+		request(api).get("/journal/1/emojiThree").expect(435435);
 	});
 	// GET /journal/:id/like
 	it("responds to get /journal/1/emojiThree with a status of 200", () => {
