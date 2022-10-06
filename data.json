@@ -19,8 +19,8 @@
         "commentBody": "New comment",
         "commentDate": "34/12/20",
         "commentTime": "12:32",
-        "like": 9,
-        "dislike": 5
+        "like": 11,
+        "dislike": 7
       },
       {
         "commentId": "vVG5aldLlB",
@@ -29,8 +29,8 @@
         "commentBody": "1st comment",
         "commentDate": "03/05/20",
         "commentTime": "12:24",
-        "like": 6,
-        "dislike": 5
+        "like": 8,
+        "dislike": 7
       }
     ]
   },
@@ -54,8 +54,8 @@
         "commentBody": "another comment",
         "commentDate": "11/12/22",
         "commentTime": "13:11",
-        "like": 4,
-        "dislike": 5
+        "like": 6,
+        "dislike": 7
       }
     ]
   }

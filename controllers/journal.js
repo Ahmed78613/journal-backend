@@ -156,19 +156,17 @@ const emojiThreeIncrement = async (req, res) => {
 
 // Like
 const likeIncrement = async (req, res) => {
-	const { id, commentId } = req.params;
+	const { commentId } = req.params;
 	try {
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
 		const journal = await JSON.parse(jsonString);
 		const updatedJournal = journal.map((entry) => {
-			if (id == entry.id) {
-				for (let i = 0; i < entry.comments.length; i++) {
-					if (entry.comments[i].commentId == commentId) {
-						entry.comments[i].like += 1;
-					}
+			for (let i = 0; i < entry.comments.length; i++) {
+				if (entry.comments[i].commentId == commentId) {
+					entry.comments[i].like += 1;
 				}
-				return entry;
-			} else return entry;
+			}
+			return entry;
 		});
 		console.log(updatedJournal);
 		// update data.json file with new data
@@ -181,19 +179,17 @@ const likeIncrement = async (req, res) => {
 
 // Dislike
 const dislikeIncrement = async (req, res) => {
-	const { id, commentId } = req.params;
+	const { commentId } = req.params;
 	try {
 		const jsonString = await fs.readFileSync("./data.json", "utf-8");
 		const journal = await JSON.parse(jsonString);
 		const updatedJournal = journal.map((entry) => {
-			if (id == entry.id) {
-				for (let i = 0; i < entry.comments.length; i++) {
-					if (entry.comments[i].commentId == commentId) {
-						entry.comments[i].dislike += 1;
-					}
+			for (let i = 0; i < entry.comments.length; i++) {
+				if (entry.comments[i].commentId == commentId) {
+					entry.comments[i].dislike += 1;
 				}
-				return entry;
-			} else return entry;
+			}
+			return entry;
 		});
 		console.log(updatedJournal);
 		// update data.json file with new data
