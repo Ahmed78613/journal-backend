@@ -15,12 +15,13 @@ describe("API server", () => {
 	});
 
 	// GET /journal
-	it("responds to get /journal with a status of 200", () => {
-		request(api).get("/journal").expect(200);
+	it("responds to get /journal with a status of 200", (done) => {
+		request(api).get("/journal").expect(200, done);
+		request(api).get("/journal/1").expect(200, done);
 	});
 	// GET /journal/:id
-	it("responds to get /:id with a status of 200", () => {
-		request(api).get("/journal/1").expect(200);
+	it("responds to get /:id with a status of 200", (done) => {
+		request(api).get("/journal/1").expect(200, done);
 	});
 	// GET /journal/1/emojiOne
 	it("responds to get /journal/1/emojiOne with a status of 200", () => {
