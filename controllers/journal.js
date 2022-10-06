@@ -31,7 +31,8 @@ const postNewJournal = async (req, res) => {
 		journal.push(body);
 		// write new
 		fs.writeFileSync("./data.json", JSON.stringify(journal, null, 2));
-		res.send("Added");
+		console.log(body)
+		res.status(201).send(journal);
 	} catch (error) {
 		console.log(error);
 	}
