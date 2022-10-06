@@ -153,6 +153,56 @@ const emojiThreeIncrement = async (req, res) => {
 	}
 };
 
+// Like
+const likeIncrement = async (req, res) => {
+	const { id, commentId } = req.params;
+	try {
+		const jsonString = await fs.readFileSync("./data.json", "utf-8");
+		const journal = await JSON.parse(jsonString);
+		const updatedJournal = journal.map((entry) => {
+			if (id == entry.id) {
+				for (let i = 0; i < entry.comments.length; i++) {
+					if (entry.comments[i].commentId == commentId) {
+						entry.comments[i].like += 1;
+					}
+				}
+				return entry;
+			} else return entry;
+		});
+		console.log(updatedJournal);
+		// update data.json file with new data
+		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
+		res.send(updatedJournal);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+// Dislike
+const dislikeIncrement = async (req, res) => {
+	const { id, commentId } = req.params;
+	try {
+		const jsonString = await fs.readFileSync("./data.json", "utf-8");
+		const journal = await JSON.parse(jsonString);
+		const updatedJournal = journal.map((entry) => {
+			if (id == entry.id) {
+				for (let i = 0; i < entry.comments.length; i++) {
+					if (entry.comments[i].commentId == commentId) {
+						entry.comments[i].dislike += 1;
+					}
+				}
+				return entry;
+			} else return entry;
+		});
+		console.log(updatedJournal);
+		// update data.json file with new data
+		fs.writeFileSync("./data.json", JSON.stringify(updatedJournal, null, 2));
+		res.send(updatedJournal);
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 module.exports = {
 	getAllJournals,
 	postNewJournal,
@@ -161,4 +211,6 @@ module.exports = {
 	emojiOneIncrement,
 	emojiTwoIncrement,
 	emojiThreeIncrement,
+	likeIncrement,
+	dislikeIncrement,
 };

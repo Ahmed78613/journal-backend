@@ -8,6 +8,8 @@ const {
 	emojiOneIncrement,
 	emojiTwoIncrement,
 	emojiThreeIncrement,
+	likeIncrement,
+	dislikeIncrement,
 } = require("../controllers/journal");
 
 router.route("/").get(getAllJournals).post(postNewJournal);
@@ -16,5 +18,7 @@ router.route("/:id").get(getJournal);
 router.route("/:id/emojiOne").get(emojiOneIncrement);
 router.route("/:id/emojiTwo").get(emojiTwoIncrement);
 router.route("/:id/emojiThree").get(emojiThreeIncrement);
+router.route("/:id/:commentId/like").get(likeIncrement);
+router.route("/:id/:commentId/dislike").get(dislikeIncrement);
 
 module.exports = router;
