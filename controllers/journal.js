@@ -57,7 +57,6 @@ const addNewComment = async (req, res) => {
 		// find & update comments Array
 		const newJournals = journal.map((journal) => {
 			if (id == journal.id) {
-				body.commentId = journal.comments.length + 1;
 				return {
 					...journal,
 					comments: [body, ...journal.comments],

@@ -20,12 +20,14 @@ describe("API server", () => {
 		request(api).get("/journal/1").expect(200, done);
 	});
 	// GET /journal/:id
-	it("responds to get /:id with a status of 200", (done) => {
-		request(api).get("/journal/1").expect(200, done);
+	it("responds to get /:id with a status of 200", async () => {
+		const res = await request(api).get("/journal/1");
+		console.log(res.text);
+		data.expect(200);
 	});
 	// GET /journal/1/emojiOne
 	it("responds to get /journal/1/emojiOne with a status of 200", () => {
-		request(api).get("/journal/1/emojiOne").expect(200);
+		request(api).get("/journal/1/emojiOne").expect();
 	});
 	// GET /journal/1/emojiTwo
 	it("responds to get /journal/1/emojiTwo with a status of 200", () => {
